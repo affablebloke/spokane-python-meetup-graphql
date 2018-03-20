@@ -1,0 +1,25 @@
+version: "3.2"
+services:
+  jupyter:
+    image: affablebloke/spokane-python-graphql:latest
+    command: jupyter notebook --allow-root --ip=0.0.0.0  --NotebookApp.token=''
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/code
+  graphql:
+    image: affablebloke/spokane-python-graphql:latest
+    command: gunicorn -c gunicorn_config.py --reload application
+    volumes:
+      - ./demo:/code
+    environment:
+      - FLASK_DEBUG=True
+      - ASYNC=False
+    ports:
+      - "80:80"
+  redis:
+    image: redis:4.0-alpine
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.2
+  postgres:
+    image: postgres:10.3-alpine

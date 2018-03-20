@@ -1,0 +1,17 @@
+arrow==0.10.0
+elasticsearch>=6.0.0,<7.0.0
+Flask==0.11.1
+Flask-GraphQL==1.4.1
+gevent
+graphene>=2.0
+gunicorn==19.7.1
+iso8601
+jupyter
+mock
+psycogreen==1.0
+psycopg2
+pytest
+requests
+requests-html
+redis==2.10.6
+snapshottest
